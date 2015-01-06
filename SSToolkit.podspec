@@ -1,24 +1,26 @@
-Pod::Spec.new do |s|
-  s.name         = 'SSToolkit'
-  s.version      = '1.0.1'
-  s.platform     = :ios
-  s.summary      = 'A collection of well-documented iOS classes for making life easier.'
-  s.homepage     = 'http://sstoolk.it'
-  s.author       = { 'Sam Soffes' => 'sam@samsoff.es' }
-  s.source       = { :git => 'https://github.com/samsoffes/sstoolkit.git', :tag => '1.0.1' }
-  s.description  = 'SSToolkit is a collection of well-documented iOS classes for making life ' \
-                   'easier by solving common problems all iOS developers face. Some really ' \
-                   'handy classes are SSCollectionView, SSGradientView, SSSwitch, and many more.'
-  s.resources    = 'Resources'
-  s.source_files = 'SSToolkit/**/*.{h,m}'
-  s.frameworks   = 'QuartzCore', 'CoreGraphics'
-  s.requires_arc = true
-  s.license      = { :type => 'MIT', :file => 'LICENSE' }
+Pod::Spec.new do |spec|
+  spec.name = 'SSToolkit'
+  spec.version = '2.0.0'
+  spec.authors = {'Sam Soffes' => 'sam@soff.es'}
+  spec.homepage = 'https://github.com/soffes/sstoolkit'
+  spec.summary = 'A grab bag of iOS goodness.'
+  spec.source = {:git => 'https://github.com/soffes/sstoolkit.git', :tag => "v#{spec.version}"}
+  spec.license = { :type => 'MIT', :file => 'LICENSE' }
 
-  def s.post_install(target)
-    prefix_header = config.project_pods_root + target.prefix_header_filename
-    prefix_header.open('a') do |file|
-      file.puts(%{#ifdef __OBJC__\n#import "SSToolkitDefines.h"\n#endif})
-    end
-  end
+  spec.platform = :ios, '6.0'
+  spec.requires_arc = true
+  spec.source_files = 'SSToolkit'
+
+  spec.dependency 'SAMAddressBar'
+  spec.dependency 'SAMBadgeView'
+  spec.dependency 'SAMGradientView'
+  spec.dependency 'SAMHUDView'
+  spec.dependency 'SAMLabel'
+  spec.dependency 'SAMLoadingView'
+  spec.dependency 'SAMCircleProgressView'
+  spec.dependency 'SAMRateLimit'
+  spec.dependency 'SAMTextField'
+  spec.dependency 'SAMTextView'
+  spec.dependency 'SAMWebView'
+  spec.dependency 'SAMCategories'
 end
